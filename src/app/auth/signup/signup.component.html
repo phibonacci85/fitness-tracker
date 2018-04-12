@@ -1,5 +1,5 @@
 <section class="signup-form">
-  <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field>
       <input
         type="email"
@@ -27,10 +27,22 @@
       <mat-error>Has to be at least 6 characters long</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Your birthday" [matDatepicker]="picker">
+      <input
+        name="birthday"
+        ngModel
+        required
+        matInput
+        placeholder="Your birthday"
+        [matDatepicker]="picker"
+        [max]="maxDate">
       <mat-datepicker-toggle matSuffix="end" [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <button type="submit" mat-raised-button color="primary">Submit</button>
+    <mat-checkbox
+      name="agree"
+      required
+      color="primary"
+      ngModel>Agree to Terms and Conditions.</mat-checkbox>
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
   </form>
 </section>
