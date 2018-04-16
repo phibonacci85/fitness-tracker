@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
@@ -16,6 +17,7 @@ import { TrainingService } from './training/training.service';
 import { environment } from '../environments/environment';
 import { UiService } from './shared/ui.service';
 import { AuthModule } from './auth/auth.module';
+import { reducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { AuthModule } from './auth/auth.module';
     AngularFirestoreModule,
     AuthModule,
     AngularFirestoreModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [
     AuthService,
